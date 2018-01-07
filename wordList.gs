@@ -2,8 +2,16 @@ function main() {
   // スプレッドシートを開く
   var spreadsheet = SpreadsheetApp.openById('Your ID Here');
   var sheetWordList = spreadsheet.getSheetByName('単語リスト');
+  if(sheetWordList == null){
+    sheetWordList = spreadsheet.insertSheet('単語リスト');
+    sheetWordList.appendRow(['単語' ,'意味','レベル']);
+  }
   var sheetResearch = spreadsheet.getSheetByName('再検索');
+  if(sheetResearch == null){
+    sheetResearch = spreadsheet.insertSheet('再検索');
+  }
   
+
   // 既存の単語リストを取得
   const wordListTemp = sheetWordList.getLastRow() == 1 ? [] : sheetWordList.getRange(2, 1, sheetWordList.getLastRow() - 1).getValues();
   var wordList = []; // すでに追加されている単語のリスト
