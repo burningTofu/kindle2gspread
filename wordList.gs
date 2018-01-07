@@ -1,6 +1,6 @@
 function main() {
   // スプレッドシートを開く
-  var spreadsheet = SpreadsheetApp.openById('12OKvcnrQw6IAj_lkw_1L51agY6K6JPqg0PHiN-wOLE8');
+  var spreadsheet = SpreadsheetApp.openById('Your ID Here');
   var sheetWordList = spreadsheet.getSheetByName('単語リスト');
   var sheetResearch = spreadsheet.getSheetByName('再検索');
   
@@ -12,10 +12,10 @@ function main() {
   }
   
 
-  //GMailからデータを取得
+  //Gmailからデータを取得
   var texts = getTextFromGmail('メモのエクスポート label:inbox');
   
-  // 手に入れたテキストについて、
+  // 手に入れたテキストについて
   for(numText in texts){
     var items = texts[numText].match(/<div class="noteText">[\s\S]*?<\/div>/gi);
     for (num in items){
